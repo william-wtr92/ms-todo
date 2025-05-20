@@ -16,6 +16,6 @@
 - [ ] Add Rate Limiting
 - [ ] Add RabbitMQ for message queue
 - [x] Add Indexing to the database
-- [ ] Add Compression Gzip
+- [x] Add Compression Gzip
 - [ ] Add Traeffik for reverse proxy
 - [x] Husky
