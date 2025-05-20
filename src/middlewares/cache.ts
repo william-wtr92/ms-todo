@@ -1,7 +1,7 @@
 import { createMiddleware } from "hono/factory"
 
 import { redis } from "@/utils/clients/redis"
-import { redisKeys } from "@/utils/keys/redisKays"
+import { redisKeys } from "@/utils/keys/redisKeys"
 import { SC } from "@/utils/status"
 import { oneMinute } from "@/utils/times"
 

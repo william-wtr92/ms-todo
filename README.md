@@ -44,7 +44,7 @@ pnpm run test:k6
 - [x] Add Grafana for visualization
 - [x] Add CI/CD pipeline
 - [x] Add Rate Limiting
-- [ ] Add RabbitMQ for message queue
+- [x] Add BullMQ for message queue
 - [x] Add Indexing to the database
 - [x] Add Compression Gzip
 - [ ] Add Traeffik for reverse proxy

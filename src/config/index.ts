@@ -39,6 +39,9 @@ const appConfigSchema = z.object({
   sentry: z.object({
     dsn: z.string(),
   }),
+  discord: z.object({
+    webhookUrl: z.string(),
+  }),
   metrics: z.object({
     username: z.string(),
     password: z.string(),
@@ -89,6 +92,9 @@ export const appConfig = appConfigSchema.parse({
   },
   sentry: {
     dsn: process.env.SENTRY_DSN,
+  },
+  discord: {
+    webhookUrl: process.env.DISCORD_WEBHOOK_URL,
   },
   metrics: {
     username: process.env.METRICS_USERNAME,

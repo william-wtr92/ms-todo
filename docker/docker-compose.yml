@@ -49,6 +49,7 @@ services:
       SENTRY_DSN: ${SENTRY_DSN}
       METRICS_USERNAME: ${METRICS_USERNAME}
       METRICS_PASSWORD: ${METRICS_PASSWORD}
+      DISCORD_WEBHOOK_URL: ${DISCORD_WEBHOOK_URL}
     volumes:
       - ./.cache/corepack:/usr/src/app/.cache/corepack
     networks:

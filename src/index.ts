@@ -22,6 +22,8 @@ import {
 import { router } from "@/utils/router"
 import { SC } from "@/utils/status"
 
+import "@/utils/workers/todoConsumer"
+
 const app = new Hono()
 
 app.use(
