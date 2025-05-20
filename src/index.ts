@@ -1,4 +1,5 @@
 import { serve } from "@hono/node-server"
+import { otel } from "@hono/otel"
 import { sentry } from "@hono/sentry"
 import { Hono } from "hono"
 import { compress } from "hono/compress"
@@ -22,6 +23,7 @@ import {
 import { router } from "@/utils/router"
 import { SC } from "@/utils/status"
 
+import "@/utils/clients/otel"
 import "@/utils/workers/todoConsumer"
 
 const app = new Hono()
@@ -47,7 +49,8 @@ app.use(
   logger(),
   prettyJSON(),
   timeout(appConfig.timeout),
-  registerMetrics
+  registerMetrics,
+  otel()
 )
 
 /** Route Not Found Handler **/

@@ -36,10 +36,9 @@ pnpm run test:k6
 - [x] Create a Dockerfile
 - [x] Create a docker-compose.yml
 - [x] Add Sentry for error tracking
-- [ ] Add Swagger for API documentation
 - [x] Add K6 for load testing
 - [x] Add Redis for caching / Idempotency HTTP headers
-- [ ] Add OpenTelemetry for distributed tracing
+- [x] Add OpenTelemetry for distributed tracing (Tempo/Grafana)
 - [x] Add Prometheus for monitoring
 - [x] Add Grafana for visualization
 - [x] Add CI/CD pipeline

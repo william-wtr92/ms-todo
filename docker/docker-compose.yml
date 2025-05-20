@@ -50,6 +50,7 @@ services:
       METRICS_USERNAME: ${METRICS_USERNAME}
       METRICS_PASSWORD: ${METRICS_PASSWORD}
       DISCORD_WEBHOOK_URL: ${DISCORD_WEBHOOK_URL}
+      TEMPO_URL: ${TEMPO_URL}
     volumes:
       - ./.cache/corepack:/usr/src/app/.cache/corepack
     networks:
@@ -61,7 +62,8 @@ services:
       - ./prometheus/:/etc/prometheus/
     entrypoint: /etc/prometheus/entrypoint.sh
     command:
-      - '--config.file=/etc/prometheus/prometheus.yml'
+      - "--config.file=/etc/prometheus/prometheus.yml"
+      - "--enable-feature=exemplar-storage"
     ports:
       - "9090:9090"
     environment:
@@ -75,6 +77,18 @@ services:
     container_name: node_exporter
     ports:
       - "9100:9100"
+    networks:
+      - ms_network
+  
+  tempo:
+    image: grafana/tempo:latest
+    volumes:
+      - ./tempo/:/etc/tempo/
+    command:
+      - "--config.file=/etc/tempo/tempo.yml"
+    ports:
+      - "4318:4318" 
+      - "3200:3200"
     networks:
       - ms_network
 

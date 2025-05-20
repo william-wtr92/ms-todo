@@ -19,9 +19,13 @@
   "dependencies": {
     "@hono-rate-limiter/redis": "^0.1.4",
     "@hono/node-server": "^1.14.2",
+    "@hono/otel": "^0.2.0",
     "@hono/prometheus": "^1.0.1",
     "@hono/sentry": "^1.2.1",
     "@hono/zod-validator": "^0.5.0",
+    "@opentelemetry/exporter-trace-otlp-http": "^0.201.1",
+    "@opentelemetry/sdk-node": "^0.201.1",
+    "@opentelemetry/sdk-trace-node": "^2.0.1",
     "bullmq": "^5.52.3",
     "dotenv": "^16.5.0",
     "drizzle-orm": "^0.43.1",

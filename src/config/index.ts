@@ -42,6 +42,9 @@ const appConfigSchema = z.object({
   discord: z.object({
     webhookUrl: z.string(),
   }),
+  tempo: z.object({
+    url: z.string(),
+  }),
   metrics: z.object({
     username: z.string(),
     password: z.string(),
@@ -95,6 +98,9 @@ export const appConfig = appConfigSchema.parse({
   },
   discord: {
     webhookUrl: process.env.DISCORD_WEBHOOK_URL,
+  },
+  tempo: {
+    url: process.env.TEMPO_URL,
   },
   metrics: {
     username: process.env.METRICS_USERNAME,
