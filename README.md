@@ -12,8 +12,8 @@
 - [ ] Add OpenTelemetry for distributed tracing
 - [ ] Add Prometheus for monitoring
 - [ ] Add Grafana for visualization
-- [ ] Add CI/CD pipeline
-- [ ] Add Rate Limiting
+- [x] Add CI/CD pipeline
+- [x] Add Rate Limiting
 - [ ] Add RabbitMQ for message queue
 - [x] Add Indexing to the database
 - [x] Add Compression Gzip

@@ -1,6 +1,8 @@
 import { config } from "dotenv"
 import { z } from "zod"
 
+import { oneMinuteMs } from "@/utils/times"
+
 config()
 
 const appConfigSchema = z.object({
@@ -37,6 +39,10 @@ const appConfigSchema = z.object({
   compression: z.object({
     encoding: z.literal("gzip"),
     treshold: z.number(),
+  }),
+  rateLimit: z.object({
+    windowMs: z.number(),
+    limit: z.number(),
   }),
 })
 
@@ -77,5 +83,9 @@ export const appConfig = appConfigSchema.parse({
   compression: {
     encoding: "gzip",
     treshold: 512,
+  },
+  rateLimit: {
+    windowMs: oneMinuteMs,
+    limit: 50,
   },
 })

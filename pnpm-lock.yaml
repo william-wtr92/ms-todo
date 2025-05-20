@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@hono-rate-limiter/redis':
+        specifier: ^0.1.4
+        version: 0.1.4(hono-rate-limiter@0.4.2(hono@4.7.10))
       '@hono/node-server':
         specifier: ^1.14.2
         version: 1.14.2(hono@4.7.10)
@@ -23,6 +26,9 @@ importers:
       hono:
         specifier: ^4.7.10
         version: 4.7.10
+      hono-rate-limiter:
+        specifier: ^0.4.2
+        version: 0.4.2(hono@4.7.10)
       ioredis:
         specifier: ^5.6.1
         version: 5.6.1
@@ -491,6 +497,11 @@ packages:
   '@eslint/plugin-kit@0.3.1':
     resolution: {integrity: sha512-0J+zgWxHN+xXONWIyPWKFMgVuJoZuGiIFu8yxk7RJjxkzpGmyja5wRFqZIVtjDVOQpV+Rw0iOAjYPE2eQyjr0w==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+
+  '@hono-rate-limiter/redis@0.1.4':
+    resolution: {integrity: sha512-RSrVX5N2Oo/xXApskegu667cBVHyr8RXGWnbRDGjU2py8pN4BttEKSHA0iKi3BAwh1xSkENgDRng4tpFD9DbKg==}
+    peerDependencies:
+      hono-rate-limiter: ^0.2.1
 
   '@hono/node-server@1.14.2':
     resolution: {integrity: sha512-GHjpOeHYbr9d1vkID2sNUYkl5IxumyhDrUJB7wBp7jvqYwPFt+oNKsAPBRcdSbV7kIrXhouLE199ks1QcK4r7A==}
@@ -1272,6 +1283,11 @@ packages:
   hasown@2.0.2:
     resolution: {integrity: sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==}
     engines: {node: '>= 0.4'}
+
+  hono-rate-limiter@0.4.2:
+    resolution: {integrity: sha512-AAtFqgADyrmbDijcRTT/HJfwqfvhalya2Zo+MgfdrMPas3zSMD8SU03cv+ZsYwRU1swv7zgVt0shwN059yzhjw==}
+    peerDependencies:
+      hono: ^4.1.1
 
   hono@4.7.10:
     resolution: {integrity: sha512-QkACju9MiN59CKSY5JsGZCYmPZkA6sIW6OFCUp7qDjZu6S6KHtJHhAc9Uy9mV9F8PJ1/HQ3ybZF2yjCa/73fvQ==}
@@ -2358,6 +2374,10 @@ snapshots:
       '@eslint/core': 0.14.0
       levn: 0.4.1
 
+  '@hono-rate-limiter/redis@0.1.4(hono-rate-limiter@0.4.2(hono@4.7.10))':
+    dependencies:
+      hono-rate-limiter: 0.4.2(hono@4.7.10)
+
   '@hono/node-server@1.14.2(hono@4.7.10)':
     dependencies:
       hono: 4.7.10
@@ -3232,6 +3252,10 @@ snapshots:
   hasown@2.0.2:
     dependencies:
       function-bind: 1.1.2
+
+  hono-rate-limiter@0.4.2(hono@4.7.10):
+    dependencies:
+      hono: 4.7.10
 
   hono@4.7.10: {}
 

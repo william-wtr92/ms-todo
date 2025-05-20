@@ -9,6 +9,8 @@ import { prettyJSON } from "hono/pretty-json"
 import { secureHeaders } from "hono/secure-headers"
 import { timeout } from "hono/timeout"
 
+import { rateLimiter } from "./middlewares/rateLimiter"
+
 import { appConfig } from "@/config"
 import { routes } from "@/routes"
 import {
@@ -28,6 +30,7 @@ app.use(
     allowHeaders: appConfig.security.cors.headers,
     credentials: appConfig.security.cors.credentials,
   }),
+  rateLimiter,
   compress({
     encoding: appConfig.compression.encoding,
     threshold: appConfig.compression.treshold,
