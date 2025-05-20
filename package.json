@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "description": "Microservice for managing todos",
   "scripts": {
+    "prepare": "husky",
     "lint": "eslint",
     "format:check": "prettier --check .",
     "format": "prettier --write .",
