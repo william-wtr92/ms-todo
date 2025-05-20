@@ -36,6 +36,9 @@ const appConfigSchema = z.object({
     password: z.string(),
     db: z.string(),
   }),
+  sentry: z.object({
+    dsn: z.string(),
+  }),
   compression: z.object({
     encoding: z.literal("gzip"),
     treshold: z.number(),
@@ -79,6 +82,9 @@ export const appConfig = appConfigSchema.parse({
     username: process.env.REDIS_USERNAME,
     password: process.env.REDIS_PASSWORD,
     db: process.env.REDIS_DB,
+  },
+  sentry: {
+    dsn: process.env.SENTRY_DSN,
   },
   compression: {
     encoding: "gzip",

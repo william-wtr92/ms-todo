@@ -1,4 +1,5 @@
 import { serve } from "@hono/node-server"
+import { sentry } from "@hono/sentry"
 import { Hono } from "hono"
 import { compress } from "hono/compress"
 import { cors } from "hono/cors"
@@ -35,6 +36,9 @@ app.use(
     encoding: appConfig.compression.encoding,
     threshold: appConfig.compression.treshold,
   }),
+  sentry({
+    dsn: appConfig.sentry.dsn,
+  }),
   secureHeaders(),
   etag(),
   logger(),
@@ -47,13 +51,29 @@ app.notFound((c) => {
   return c.json(routeNotFound, SC.errors.NOT_FOUND)
 })
 
-/** Global Error Handler **/
-app.onError((_, c) => {
+/** Global Error Handler (Sentry) **/
+app.onError((err, c) => {
+  const sentryInstance = c.get("sentry")
+
+  if (sentryInstance) {
+    sentryInstance.captureException(err)
+
+    sentryInstance.setContext("request", {
+      method: c.req.method,
+      path: c.req.path,
+      headers: Object.fromEntries(c.req.raw.headers.entries()),
+    })
+  }
+
   return c.json(unspecifiedErrorOccurred, SC.serverErrors.INTERNAL_SERVER_ERROR)
 })
 
 app.get("/", (c) => {
   return c.json(`Health Check: ${appConfig.env}`, SC.success.OK)
+})
+
+app.get("/test-sentry", () => {
+  throw new Error("💥 This route always fails")
 })
 
 app.route(router.todos, routes.todos)

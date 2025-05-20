@@ -46,6 +46,7 @@ services:
       REDIS_USERNAME: ${REDIS_USERNAME_DOCKER}
       REDIS_PASSWORD: ${REDIS_PASSWORD_DOCKER}
       REDIS_DB: ${REDIS_DB_DOCKER}
+      SENTRY_DSN: ${SENTRY_DSN}
     volumes:
       - ./.cache/corepack:/usr/src/app/.cache/corepack
     networks:
