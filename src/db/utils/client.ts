@@ -1,6 +1,7 @@
-import { appConfig } from "@/config"
 import { drizzle } from "drizzle-orm/postgres-js"
 import postgres from "postgres"
+
+import { appConfig } from "@/config"
 import * as schema from "@/db/schema"
 
 const {

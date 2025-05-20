@@ -1,14 +1,13 @@
 import { createMiddleware } from "hono/factory"
+
 import { redis } from "@/utils/clients/redis"
-import { oneDayTTL } from "@/utils/times"
 import { redisKeys } from "@/utils/keys/redisKays"
 import { SC } from "@/utils/status"
+import { oneDayTTL } from "@/utils/times"
 
 export const idempotency = createMiddleware(async (c, next) => {
   const key = c.req.header("Idempotency-Key")
   const method = c.req.method
-
-  console.log("Idempotency Key:", key)
 
   if (method !== "POST" || !key) {
     return await next()
@@ -19,6 +18,7 @@ export const idempotency = createMiddleware(async (c, next) => {
 
   if (cached) {
     c.header("X-Idempotent-Replay", "true")
+
     return c.newResponse(cached, SC.success.OK, {
       "Content-Type": "application/json",
     })
@@ -29,6 +29,7 @@ export const idempotency = createMiddleware(async (c, next) => {
 
   c.json = (...args) => {
     responseBody = args[0]
+
     // @ts-expect-error TS cannot resolve the overloads here — safe anyway
     return originalJson(...args)
   }

@@ -1,11 +1,12 @@
+import { zValidator } from "@hono/zod-validator"
+import { eq } from "drizzle-orm"
+import { Hono } from "hono"
+
 import { todos } from "@/db/schema"
 import { db } from "@/db/utils/client"
 import { todoIdSchema, updateTodoSchema } from "@/types/todos"
 import { todoNotFound } from "@/utils/messages/todos"
 import { SC } from "@/utils/status"
-import { zValidator } from "@hono/zod-validator"
-import { eq } from "drizzle-orm"
-import { Hono } from "hono"
 
 const app = new Hono()
 

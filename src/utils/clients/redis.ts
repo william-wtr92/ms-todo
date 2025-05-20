@@ -1,5 +1,6 @@
-import { appConfig } from "@/config"
 import Redis from "ioredis"
+
+import { appConfig } from "@/config"
 
 const { port, host, password } = appConfig.redis
 

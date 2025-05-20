@@ -1,5 +1,6 @@
 import { z } from "zod"
-import { paginationSchema } from "../global/pagination"
+
+import { paginationSchema } from "@/types/global/pagination"
 
 export const todoIdSchema = z.object({
   id: z.string().uuid(),

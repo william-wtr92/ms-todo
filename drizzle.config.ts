@@ -1,5 +1,6 @@
-import { appConfig } from "./src/config"
 import { defineConfig } from "drizzle-kit"
+
+import { appConfig } from "./src/config"
 
 const {
   user,

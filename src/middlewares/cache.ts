@@ -1,8 +1,9 @@
+import { createMiddleware } from "hono/factory"
+
 import { redis } from "@/utils/clients/redis"
 import { redisKeys } from "@/utils/keys/redisKays"
 import { SC } from "@/utils/status"
 import { oneMinute } from "@/utils/times"
-import { createMiddleware } from "hono/factory"
 
 export const cache = (ttl = oneMinute) =>
   createMiddleware(async (c, next) => {
@@ -22,6 +23,7 @@ export const cache = (ttl = oneMinute) =>
 
     if (cached) {
       c.header("X-Cache-Hit", "true")
+
       return c.newResponse(cached, SC.success.OK, {
         "Content-Type": "application/json",
       })
@@ -32,6 +34,7 @@ export const cache = (ttl = oneMinute) =>
 
     c.json = (...args) => {
       responseBody = args[0]
+
       // @ts-expect-error safe overload
       return originalJson(...args)
     }

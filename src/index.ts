@@ -1,21 +1,22 @@
 import { serve } from "@hono/node-server"
 import { Hono } from "hono"
-import { appConfig } from "@/config"
+import { compress } from "hono/compress"
 import { cors } from "hono/cors"
-import { secureHeaders } from "hono/secure-headers"
+import { showRoutes } from "hono/dev"
 import { etag } from "hono/etag"
 import { logger } from "hono/logger"
 import { prettyJSON } from "hono/pretty-json"
+import { secureHeaders } from "hono/secure-headers"
+import { timeout } from "hono/timeout"
+
+import { appConfig } from "@/config"
+import { routes } from "@/routes"
 import {
   routeNotFound,
   unspecifiedErrorOccurred,
-} from "./utils/messages/global"
-import { SC } from "./utils/status"
-import { router } from "./utils/router"
-import { routes } from "./routes"
-import { showRoutes } from "hono/dev"
-import { timeout } from "hono/timeout"
-import { compress } from "hono/compress"
+} from "@/utils/messages/global"
+import { router } from "@/utils/router"
+import { SC } from "@/utils/status"
 
 const app = new Hono()
 
@@ -60,6 +61,7 @@ serve(
     port: appConfig.port,
   },
   () => {
+    // eslint-disable-next-line no-console
     console.info(`🚀 Server running on port ${appConfig.port}`)
   }
 )
