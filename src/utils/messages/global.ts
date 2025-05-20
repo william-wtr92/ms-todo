@@ -12,3 +12,8 @@ export const toManyRequests = {
   result: "Too many requests",
   key: "toManyRequests",
 } as const
+
+export const unauthorized = {
+  result: "Unauthorized",
+  key: "unauthorized",
+} as const

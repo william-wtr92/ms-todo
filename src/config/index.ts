@@ -39,6 +39,10 @@ const appConfigSchema = z.object({
   sentry: z.object({
     dsn: z.string(),
   }),
+  metrics: z.object({
+    username: z.string(),
+    password: z.string(),
+  }),
   compression: z.object({
     encoding: z.literal("gzip"),
     treshold: z.number(),
@@ -85,6 +89,10 @@ export const appConfig = appConfigSchema.parse({
   },
   sentry: {
     dsn: process.env.SENTRY_DSN,
+  },
+  metrics: {
+    username: process.env.METRICS_USERNAME,
+    password: process.env.METRICS_PASSWORD,
   },
   compression: {
     encoding: "gzip",

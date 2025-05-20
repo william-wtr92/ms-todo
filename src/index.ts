@@ -1,5 +1,4 @@
 import { serve } from "@hono/node-server"
-import { prometheus } from "@hono/prometheus"
 import { sentry } from "@hono/sentry"
 import { Hono } from "hono"
 import { compress } from "hono/compress"
@@ -12,6 +11,7 @@ import { secureHeaders } from "hono/secure-headers"
 import { timeout } from "hono/timeout"
 
 import { rateLimiter } from "./middlewares/rateLimiter"
+import { registerMetrics } from "./utils/clients/prometheus"
 
 import { appConfig } from "@/config"
 import { routes } from "@/routes"
@@ -23,8 +23,6 @@ import { router } from "@/utils/router"
 import { SC } from "@/utils/status"
 
 const app = new Hono()
-
-const { printMetrics, registerMetrics } = prometheus()
 
 app.use(
   "*",
@@ -76,13 +74,7 @@ app.get("/", (c) => {
   return c.json(`Health Check: ${appConfig.env}`, SC.success.OK)
 })
 
-app.get("/metrics", printMetrics)
-
-app.get("/test-sentry", () => {
-  throw new Error("💥 This route always fails")
-})
-
-app.route(router.todos, routes.todos)
+app.route(router.todos, routes.todos).route(router.global, routes.global)
 
 serve(
   {

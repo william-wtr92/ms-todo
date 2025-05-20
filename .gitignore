@@ -30,3 +30,6 @@ lerna-debug.log*
 
 # build
 dist/
+
+# files
+docker/prometheus/prometheus.yml
