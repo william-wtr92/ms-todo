@@ -10,8 +10,8 @@
 - [ ] Add K6 for load testing
 - [x] Add Redis for caching / Idempotency HTTP headers
 - [ ] Add OpenTelemetry for distributed tracing
-- [ ] Add Prometheus for monitoring
-- [ ] Add Grafana for visualization
+- [x] Add Prometheus for monitoring
+- [x] Add Grafana for visualization
 - [x] Add CI/CD pipeline
 - [x] Add Rate Limiting
 - [ ] Add RabbitMQ for message queue

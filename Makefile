@@ -1,5 +1,5 @@
 ENV_FILE = .env
-DC = docker compose --env-file $(ENV_FILE) -f docker-compose.yml
+DC = docker compose --env-file $(ENV_FILE) -f docker/docker-compose.yml
 
 help: ## Display this help message
 	@echo "List of available commands:"
@@ -12,7 +12,7 @@ help: ## Display this help message
 	@echo "  make clear-cache  # Remove docker cache"
 
 image: ## Build the Docker image only
-	docker build -t ms-todo:latest .
+	docker build -f docker/Dockerfile -t ms-todo:latest .
 	@echo "Docker image 'ms-todo:latest' built successfully 🐳!"
 
 up: ## Start services

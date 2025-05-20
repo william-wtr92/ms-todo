@@ -1,4 +1,5 @@
 import { serve } from "@hono/node-server"
+import { prometheus } from "@hono/prometheus"
 import { sentry } from "@hono/sentry"
 import { Hono } from "hono"
 import { compress } from "hono/compress"
@@ -23,6 +24,8 @@ import { SC } from "@/utils/status"
 
 const app = new Hono()
 
+const { printMetrics, registerMetrics } = prometheus()
+
 app.use(
   "*",
   cors({
@@ -43,7 +46,8 @@ app.use(
   etag(),
   logger(),
   prettyJSON(),
-  timeout(appConfig.timeout)
+  timeout(appConfig.timeout),
+  registerMetrics
 )
 
 /** Route Not Found Handler **/
@@ -71,6 +75,8 @@ app.onError((err, c) => {
 app.get("/", (c) => {
   return c.json(`Health Check: ${appConfig.env}`, SC.success.OK)
 })
+
+app.get("/metrics", printMetrics)
 
 app.get("/test-sentry", () => {
   throw new Error("💥 This route always fails")
