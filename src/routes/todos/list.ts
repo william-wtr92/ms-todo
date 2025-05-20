@@ -1,5 +1,6 @@
 import { todos } from "@/db/schema"
 import { db } from "@/db/utils/client"
+import { cache } from "@/middlewares/cache"
 import { listTodoSchema } from "@/types/todos"
 import { SC } from "@/utils/status"
 import { zValidator } from "@hono/zod-validator"
@@ -10,6 +11,7 @@ const app = new Hono()
 
 export const listTodoRoute = app.get(
   "/",
+  cache(),
   zValidator("query", listTodoSchema),
   async (c) => {
     const { limit: limitString, page, orderBy } = c.req.valid("query")

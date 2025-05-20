@@ -10,8 +10,12 @@ post {
   auth: none
 }
 
+headers {
+  Idempotency-Key: abc-123
+}
+
 body:json {
   {
-    "content": "Devoir JAVA"
+    "content": "Devoir Golang 2"
   }
 }

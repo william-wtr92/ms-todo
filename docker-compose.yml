@@ -13,6 +13,15 @@ services:
       interval: 2s
       timeout: 3s
       retries: 10
+    networks:
+      - ms_network
+
+  redis:
+    image: "redis:alpine"
+    ports:
+      - "6379:6379"
+    networks:
+      - ms_network
 
   api:
     build:
@@ -39,3 +48,9 @@ services:
       REDIS_DB: ${REDIS_DB}
     volumes:
       - ./.cache/corepack:/usr/src/app/.cache/corepack
+    networks:
+      - ms_network
+
+networks:
+  lootopia_network:
+    driver: bridge

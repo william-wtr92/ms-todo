@@ -4,11 +4,13 @@ import { createTodoSchema } from "@/types/todos"
 import { db } from "@/db/utils/client"
 import { todos } from "@/db/schema"
 import { SC } from "@/utils/status"
+import { idempotency } from "@/middlewares/idempotency"
 
 const app = new Hono()
 
 export const createTodoRoute = app.post(
   "/",
+  idempotency,
   zValidator("json", createTodoSchema),
   async (c) => {
     const { content } = c.req.valid("json")
