@@ -47,7 +47,10 @@ export const appConfig = appConfigSchema.parse({
     port: parseInt(process.env.DB_PORT!, 10),
     name: process.env.DB_NAME,
     migrations: {
-      schema: "./src/db/schema/index.ts",
+      schema:
+        process.env.NODE_ENV === "development"
+          ? "./src/db/schema/index.ts"
+          : "./src/db/schema/index.js",
       out: "./src/db/migrations",
       dialect: "postgresql",
     },
