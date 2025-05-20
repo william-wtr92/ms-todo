@@ -1,0 +1,22 @@
+meta {
+  name: update-todo
+  type: http
+  seq: 3
+}
+
+put {
+  url: {{baseUrl}}/todos/{{todoId}}
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "content": "Devoir TypeScript",
+    "done": true
+  }
+}
+
+vars:pre-request {
+  todoId: 3c40a89d-dc4a-48c1-ae28-15d7c838bf3b
+}

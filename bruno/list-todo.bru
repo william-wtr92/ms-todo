@@ -1,0 +1,17 @@
+meta {
+  name: list-todo
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseUrl}}/todos?limit=2&page=0
+  body: none
+  auth: none
+}
+
+query {
+  limit: 2
+  page: 0
+  ~orderBy: createdAt
+}
