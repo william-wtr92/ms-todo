@@ -34,6 +34,10 @@ const appConfigSchema = z.object({
     password: z.string(),
     db: z.string(),
   }),
+  compression: z.object({
+    encoding: z.literal("gzip"),
+    treshold: z.number(),
+  }),
 })
 
 export const appConfig = appConfigSchema.parse({
@@ -69,5 +73,9 @@ export const appConfig = appConfigSchema.parse({
     username: process.env.REDIS_USERNAME,
     password: process.env.REDIS_PASSWORD,
     db: process.env.REDIS_DB,
+  },
+  compression: {
+    encoding: "gzip",
+    treshold: 512,
   },
 })

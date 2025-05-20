@@ -15,6 +15,7 @@ import { router } from "./utils/router"
 import { routes } from "./routes"
 import { showRoutes } from "hono/dev"
 import { timeout } from "hono/timeout"
+import { compress } from "hono/compress"
 
 const app = new Hono()
 
@@ -25,6 +26,10 @@ app.use(
     allowMethods: appConfig.security.cors.methods,
     allowHeaders: appConfig.security.cors.headers,
     credentials: appConfig.security.cors.credentials,
+  }),
+  compress({
+    encoding: appConfig.compression.encoding,
+    threshold: appConfig.compression.treshold,
   }),
   secureHeaders(),
   etag(),

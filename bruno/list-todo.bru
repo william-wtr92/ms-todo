@@ -5,13 +5,17 @@ meta {
 }
 
 get {
-  url: {{baseUrl}}/todos?limit=2&page=0
+  url: {{baseUrl}}/todos?limit=10&page=0
   body: none
   auth: none
 }
 
 query {
-  limit: 2
+  limit: 10
   page: 0
   ~orderBy: createdAt
+}
+
+headers {
+  Accept-Encoding: gzip
 }

@@ -6,6 +6,10 @@ import { createMiddleware } from "hono/factory"
 
 export const cache = (ttl = oneMinute) =>
   createMiddleware(async (c, next) => {
+    if (c.req.header("X-Bypass-Cache")) {
+      return await next()
+    }
+
     const url = new URL(c.req.url)
     const pathname = url.pathname
     const query = [...url.searchParams.entries()]
