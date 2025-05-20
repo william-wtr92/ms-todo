@@ -59,4 +59,6 @@ serve(
   }
 )
 
-showRoutes(app)
+if (appConfig.env === "development") {
+  showRoutes(app)
+}
