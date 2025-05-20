@@ -9,23 +9,14 @@
     "types": [
       "node"
     ],
-    "baseUrl": "./",
-    "paths": {
-      "@/*": [
-        "./src/*"
-      ]
-    },
-    "outDir": "./dist"
+    "outDir": "./dist/src/tests/k6"
   },
   "include": [
-    "src/**/*.ts",
-    "drizzle.config.ts"
+    "src/tests/**/*.ts",
   ],
   "exclude": [
     "node_modules",
     "dist",
-    "migrations",
-    "src/tests/**/*.ts",
   ],
   "tsc-alias": {
     "resolveFullPaths": true,

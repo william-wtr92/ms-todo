@@ -12,7 +12,9 @@
     "build": "tsc && tsc-alias",
     "start": "node dist/src/index.js",
     "db:generate": "pnpm exec drizzle-kit generate",
-    "db:migrate": "pnpm exec drizzle-kit migrate"
+    "db:migrate": "pnpm exec drizzle-kit migrate",
+    "build:k6": "tsc -p tsconfig.k6.json && tsc-alias",
+    "test:k6": "k6 run --out json=./src/tests/k6/k6.json ./dist/src/tests/k6/index.js"
   },
   "dependencies": {
     "@hono-rate-limiter/redis": "^0.1.4",
@@ -33,6 +35,7 @@
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
     "@eslint/eslintrc": "^3.3.1",
+    "@types/k6": "^1.0.2",
     "@types/node": "^20.11.17",
     "@typescript-eslint/eslint-plugin": "^8.32.1",
     "@typescript-eslint/parser": "^8.32.1",

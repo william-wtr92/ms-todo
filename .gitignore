@@ -33,3 +33,4 @@ dist/
 
 # files
 docker/prometheus/prometheus.yml
+src/tests/k6/k6.json
