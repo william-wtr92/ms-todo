@@ -1,4 +1,6 @@
-# Micro-services ToDo List API
+# 🚀 Micro-services ToDo List API
+
+> A micro-services ToDo List API built with Hono, Redis, BullMQ, OpenTelemetry, Prometheus, Grafana, and Sentry.
 
 ## Installation
 
@@ -29,6 +31,16 @@ pnpm run build:k6
 ```bash
 pnpm run test:k6
 ```
+
+## Grafana
+
+> Hono Dashboard
+
+![Hono Dashboard](./docs/hono-dashboard.png)
+
+> Node Dashboard
+
+![Node Dashboard](./docs/node-dashboard.png)
 
 ## Checklist
 
