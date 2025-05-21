@@ -8,11 +8,11 @@ scrape_configs:
     basic_auth:
       username: "${METRICS_USERNAME}"
       password: "${METRICS_PASSWORD}"
-    honor_labels: true
-    metric_relabel_configs:
-      - source_labels: [__name__]
-        regex: "http_request_duration_seconds"
-        action: keep
+    # honor_labels: true
+    # metric_relabel_configs:
+    #   - source_labels: [__name__]
+    #     regex: "http_request_duration_seconds"
+    #     action: keep
 
   - job_name: 'node_exporter'
     static_configs:
