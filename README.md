@@ -46,5 +46,5 @@ pnpm run test:k6
 - [x] Add BullMQ for message queue
 - [x] Add Indexing to the database
 - [x] Add Compression Gzip
-- [ ] Add Traeffik for reverse proxy
+- [x] Add PM2 Cluster
 - [x] Husky

@@ -146,7 +146,7 @@ const eslintConfig = [
         },
       ],
     },
-    ignorePatterns: ["dist/"],
+    ignorePatterns: ["dist/", "node_modules/", "ecosystem.config.cjs"],
   }),
 ]
 

@@ -3,6 +3,7 @@ FROM node:23-slim AS base
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 ENV PNPM_POSTINSTALL_ENABLE=false
+ENV HOME=/usr/src/app 
 
 RUN corepack enable
 
@@ -10,7 +11,7 @@ WORKDIR /usr/src/app
 
 FROM base AS build
 
-COPY package.json pnpm-lock.yaml ./
+COPY package.json pnpm-lock.yaml ecosystem.config.cjs ./
 COPY src/ src/
 COPY tsconfig.json ./
 COPY drizzle.config.ts ./
@@ -34,6 +35,7 @@ COPY --from=build --chown=hono:nodejs /usr/src/app/package.json ./
 COPY --from=build --chown=hono:nodejs /usr/src/app/pnpm-lock.yaml ./
 COPY --from=build --chown=hono:nodejs /usr/src/app/dist/ ./  
 
+COPY --from=build --chown=hono:nodejs /usr/src/app/ecosystem.config.cjs ./
 COPY scripts/entrypoint.sh /usr/src/app/entrypoint.sh
 
 RUN chown -R hono:nodejs /usr/src/app
