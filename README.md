@@ -2,6 +2,10 @@
 
 > A micro-services ToDo List API built with Hono, Redis, BullMQ, OpenTelemetry, Prometheus, Grafana, and Sentry.
 
+## Architecture
+
+![Architecture](./docs/arch.png)
+
 ## Installation
 
 ### Manually
